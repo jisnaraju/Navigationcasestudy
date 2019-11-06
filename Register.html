@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    .block1
+    {
+  background-color: #FA8072;
+  width: 300px;
+  border: 15px solid white;
+  padding: 23px;
+  margin: 20px;
+  height: 600px;
+    }
+    .block2
+    {
+  background-color: #FA8072;
+  width: 300px;
+  border: 15px solid white;
+  padding: 23px;
+  margin: 20px;
+  height: 600px;  
+    }
+    .block3
+    {
+  background-color: #FA8072;
+  width: 300px;
+  border: 15px solid white;
+  padding: 23px;
+  margin: 20px;
+  height: 600px;  
+    }
+ input
+{
+  width: 200px;
+  height: 25px;
+  padding: 5px;
+
+}
+label
+{
+    color:honeydew;
+}
+#btn
+{
+    background-color:black;
+    color: blanchedalmond;
+    margin-left:120px;
+    width:100px;
+    border:1px solid blue;
+    height:30px;
+}
+    </style>
+<head>
+        <script src="Registerjs.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: grey;">
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="block1">
+          <img src="Capture.PNG" alt="" style="width: 166px;">
+          <h1 style="font-size:25px;color:white;">Become a Member</h1>
+          <div style="margin-top:50px">
+                <p style="color: honeydew;font-size: 15px;">
+                        Welcome to the Super 8 Film <br>society.We are agroup of film <br>enthusiasts who meet up each <br>
+                        month to watch old movies on <br> film,in our own private cinema.
+                         <br>We also create our own short film <br> each year,which is entered into <br>film competetions worldwide.
+                  </p>
+          </div>
+         
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="block2">
+                <h3 style="color: honeydew;margin-top:0px">Settings </h3>
+       
+         <label for="">UserName:</label>
+                <input type="text" onkeydown = "return hadWhitespace(event)" onblur="Length()" id="uname">
+                <p id="msg1" style="visibility: hidden; color: red;">atlest 5 characters</p><br>
+        <label for="">Email ID</label>       
+                            <input type="text" id="email" onblur="ChekMail()"><br>
+                            <p id="msg2" style="visibility: hidden; color: red;font-size:15px">Please Enter a valid mail</p><br><br>
+        <label for="">Password</label>
+                            <input type="password" id="pswd" onblur="chekPswd()"><br>
+                            <p id="msg3" style="visibility: hidden; color: red;">Your Password have atleast 8 characters</p>
+        <label for="">Confirm Password</label>
+                            <input type="password" id="confirmpwd"><br>
+                            <span id='msg4'></span>
+       
+        </div>
+  
+      
+    </div>
+    <div class="col-sm-4">
+        <div class="block3">
+                <h3 style="color: honeydew;margin-top:0px">Profile</h3>  
+                <label for="">BirthDay</label>
+                <input type="date" id="calendar" onblur="calculate_age()"><br>
+                <span id='msg5' style="visibility: hidden; color: red;">
+                    You need a parent's permission to join.Tick here if your child can join
+                </span>
+                <input type="checkbox" checked name="" id="chkbox"style="visibility: hidden;">
+
+                <label for="">Short Bio</label>
+                <textarea name="bio" id="bio" cols="30" rows="5" placeholder="bio"></textarea>
+                <p>characters:<span id="count">140</span></p>
+                <p id="msg6" style="color: red;"></p>
+
+                <button class="submit" id="btn">Register</button>
+        </div>     
+    </div>
+  </div>
+</div>
+
+</body>
+<script>
+        $(document).ready(function(){ 
+         $('#pswd, #confirmpwd').on('keyup', function () 
+         {
+         
+            // console.log('#confirmpwd'.val);
+             if ($('#pswd').val() == $('#confirmpwd').val()) {
+               $('#msg4').html('Matching').css('color', 'green');
+             } else 
+               $('#msg4').html('Not Matching').css('color', 'red');
+           });
+     });
+      
+      i=140;
+     $(document).ready(function()
+      {
+          $("#bio").keypress(function()
+          {
+             i--;
+             if(i>=0)
+             {
+                 $("#count").text(i);
+             }
+             else
+             {
+               var msg6=document.getElementById("msg6");
+               msg6.textContent="Characters Exceed";
+             }
+          });
+          $('#bio').keypress(function()
+          {
+            if(keycode==8)
+            {
+                var len=document.getElementById('#count');
+                console.log(len);
+                var i=len.value+1;
+                $("#count").text(i);
+
+            }
+          });
+         
+     });
+     
+        </script>
+</html>
